@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Loading from './Loading.js';
 import ListItem from './MemberItem.js';
+import TopListItem from './TopMemberItem.js';
+import TopList from './TopMember.js';
 import List from './Member.js';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -127,26 +129,22 @@ function Rank() {
         loading ? (
             <Loading />
         ) : (
-        <div className="container mx-auto">
-            <div className="w-250 mx-auto">
-                <article className="p-4 sm:p-6 lg:p-4 xl:p-6 space-x-4 items-start sm:space-x-6 lg:space-x-4 xl:space-x-6 flex justify-start">
-                    <div class="basis-1/6 self-center text-center"><span class="text-xl font-medium text-gray-500">Rank</span></div>
-                    <div class="basis-full"></div>
-                    <div class="basis-1/6 self-center text-center">
-                        <span class="text-xl font-medium text-gray-500">Streak</span>
-                    </div>
-                    <div class="basis-1/6 self-center text-center">
-                        <span class="text-xl font-medium text-gray-500">Exp.</span>
-                    </div>
-                </article>
-                <List>
-                    {members && members.map(member => (
-                        <ListItem key={member.id} member={member} />
-                    ))}
-                </List>
+            <div className="container mx-auto md:p-0 p-4 md:mt-12">
+                <div className="md:w-250 w-auto mx-auto">
+                    <TopList>
+                        {members && members.slice(0, 3).map(member => (
+                            <TopListItem key={member.id} member={member} />
+                        ))}
+                    </TopList>
+
+                    <List>
+                        {members && members.slice(3).map(member => (
+                            <ListItem key={member.id} member={member} />
+                        ))}
+                    </List>
+                </div>
             </div>
-        </div>
-    ));
+        ));
 }
 
 export default Rank;
