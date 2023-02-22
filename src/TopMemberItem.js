@@ -45,7 +45,7 @@ export default function Member({ member }) {
                                 <img alt={member.name} class="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={FirstAvatar} />
                             </div>
                             <div class="absolute bottom-0 w-full">
-                                <img  alt={member.name} src={GoldCup} class="w-20 mx-auto" style={{ marginBottom: "-20px" }} />
+                                <img  alt={member.name} src={GoldCup} class="md:w-20 w-16 mx-auto" style={{ marginBottom: "-20px" }} />
                             </div>
                         </div>
                         <h2 class="lg:text-2xl text-xl text-emerald-600 font-medium">{member.name}</h2>
@@ -74,7 +74,7 @@ export default function Member({ member }) {
                                 )}
                             </div>
                         </div>
-                        <h2 class="text-emerald-600 font-medium whitespace-nowrap">{member.name}</h2>
+                        <h2 class="md:text-xl text-emerald-600 font-medium whitespace-nowrap">{member.name}</h2>
                     </Animated>
                 </Tooltip>
             </div>
