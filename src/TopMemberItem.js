@@ -14,15 +14,15 @@ export default function ({ member }) {
                         <img src="https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/cup-1024.png" class="w-14 mx-auto" style={{marginBottom: "-20px"}} />
                     </div>
                 </div>
-                <h2 class="text-2xl text-emerald-600 font-medium">{member.name}</h2>
+                <h2 class="lg:text-2xl text-xl text-emerald-600 font-medium">{member.name}</h2>
             </div>
         );
     } else {
         memberContent = (
             <div className={member.rank == 2 ? "basis-1/4 self-end order-first" : "basis-1/4 self-end"}>
                 <img class="rounded-full mx-auto mb-2 w-11/12 border-4 border-emerald-500 p-1" src={member.avatar} />
-                <h2 class="text-2xl text-emerald-600">{member.name}</h2>
-                <span class="font-medium">#{member.rank}</span> - <span class="">{member.totalXPPoints}</span>
+                <h2 class="lg:text-2xl text-emerald-600 whitespace-nowrap">{member.name}</h2>
+                <span class="text-sm font-medium">#{member.rank}</span> - <span class="text-sm ">{member.totalXPPoints}</span>
             </div>
         );
     }
