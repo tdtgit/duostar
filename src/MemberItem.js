@@ -1,6 +1,6 @@
 export default function ({ member }) {
     return (
-        <article className="p-4 sm:p-6 lg:p-4 xl:p-6 space-x-4 items-start sm:space-x-6 lg:space-x-4 xl:space-x-6 flex justify-start">
+        <article className="p- sm:p-6 lg:p-4 xl:p-5 space-x-4 items-start sm:space-x-6 lg:space-x-4 xl:space-x-6 flex justify-start">
             <div class="basis-1/6 self-center text-center"><span class="text-2xl font-medium text-gray-600">#{member.rank}</span></div>
             <div class="basis-full">
                 <a href={`https://www.duolingo.com/profile/${member.username}`} target="_blank" rel="noreferrer">

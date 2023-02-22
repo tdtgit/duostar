@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loading from './Loading.js';
 import ListItem from './MemberItem.js';
 import List from './Member.js';
 
@@ -43,27 +44,16 @@ function getMissingDates(points) {
 
 function calculateStreak(points) {
     let streak = 0;
-    let longestStreak = 0;
-    let lastStreakDate = null;
     points.forEach(point => {
-        if (point.gainedXp > 0) {
-            const pointDate = new Date(point.date * 1000);
-            if (!lastStreakDate || pointDate.getTime() === lastStreakDate.getTime() + (24 * 60 * 60 * 1000)) {
-                streak += 1;
-                if (streak > longestStreak) {
-                    longestStreak = streak;
-                }
-            } else {
-                streak = 1;
-            }
-            lastStreakDate = pointDate;
-        }
+        if (point.gainedXp > 0)
+            streak++;
     });
-    return { streak, longestStreak };
+    return streak;
 }
 
 function Rank() {
     const [members, setMembers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchUserInfo = async (member) => {
         const response = await fetch(`${BACKEND_URL}/${member}`);
@@ -72,10 +62,6 @@ function Rank() {
     }
 
     const fetchUserPoints = async (member) => {
-        const endDate = new Date();
-        endDate.setDate(endDate.getDate() - 1);
-        const startDate = new Date();
-        startDate.setDate(startDate.getDate() - 6);
         const response = await fetch(`${BACKEND_URL}/${member.id}/points`);
         const data = await response.json();
         return data;
@@ -107,20 +93,15 @@ function Rank() {
                     }))
                     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-                const today = new Date();
-                const oneWeekAgo = new Date(today.getTime() - (7 * 24 * 60 * 60 * 1000));
-
                 let totalXPPoints = calculateTotalXPPoints(memberData[index].points);
 
-                const streakData = calculateStreak(memberData[index].points);
-                memberData[index].streak = streakData.streak;
-                memberData[index].longestStreak = streakData.longestStreak;
+                memberData[index].streak = calculateStreak(memberData[index].points);
 
                 let missingDates = getMissingDates(memberData[index].points);
                 memberData[index].points = [...memberData[index].points, ...missingDates];
                 memberData[index].points = memberData[index].points.sort((a, b) => a.date - b.date);
 
-                const totalPoints = (totalXPPoints + (streakData.streak * streakWeight)) * pointWeight;
+                const totalPoints = (totalXPPoints + (memberData[index].streak * streakWeight)) * pointWeight;
                 memberData[index].totalXPPoints = totalXPPoints;
                 memberData[index].totalPoints = totalPoints;
             });
@@ -137,23 +118,25 @@ function Rank() {
 
             console.log(memberData);
             setMembers(memberData);
+            setLoading(false);
         }
         fetchData();
     }, []);
 
     return (
+        loading ? (
+            <Loading />
+        ) : (
         <div className="container mx-auto">
             <div className="w-250 mx-auto">
                 <article className="p-4 sm:p-6 lg:p-4 xl:p-6 space-x-4 items-start sm:space-x-6 lg:space-x-4 xl:space-x-6 flex justify-start">
-                    <div class="basis-1/6 self-center text-center"><span class="text-xl font-medium text-gray-600">Rank</span></div>
-                    <div class="basis-full">
-
+                    <div class="basis-1/6 self-center text-center"><span class="text-xl font-medium text-gray-500">Rank</span></div>
+                    <div class="basis-full"></div>
+                    <div class="basis-1/6 self-center text-center">
+                        <span class="text-xl font-medium text-gray-500">Streak</span>
                     </div>
                     <div class="basis-1/6 self-center text-center">
-                        <span class="text-xl font-medium text-gray-800">Star</span>
-                    </div>
-                    <div class="basis-1/6 self-center text-center">
-                        <span class="text-xl font-medium text-gray-800">Exp</span>
+                        <span class="text-xl font-medium text-gray-500">Exp.</span>
                     </div>
                 </article>
                 <List>
@@ -163,7 +146,7 @@ function Rank() {
                 </List>
             </div>
         </div>
-    );
+    ));
 }
 
 export default Rank;
