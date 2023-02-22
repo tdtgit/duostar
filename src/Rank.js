@@ -11,12 +11,8 @@ const pointWeight = 1;
 
 const calculateTotalXPPoints = (points) => {
     let totalXPPoints = 0;
-    const today = new Date();
     points.forEach(point => {
-        const pointDate = new Date(point.date * 1000);
-        if (pointDate < today) {
-            totalXPPoints += point.gainedXp;
-        }
+        totalXPPoints += point.gainedXp;
     });
     return totalXPPoints;
 };
