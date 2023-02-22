@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ListItem from './MemberItem.js';
 import List from './Member.js';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const streakWeight = 200;
 const pointWeight = 1;
 
@@ -65,8 +66,7 @@ function Rank() {
     const [members, setMembers] = useState([]);
 
     const fetchUserInfo = async (member) => {
-        // const response = await fetch(`https://www.duolingo.com/2017-06-30/users?username=${member}`);
-        const response = await fetch(`https://duostar-worker.tdtgit.workers.dev/${member}`);
+        const response = await fetch(`${BACKEND_URL}/${member}`);
         const data = await response.json();
         return data;
     }
@@ -76,8 +76,7 @@ function Rank() {
         endDate.setDate(endDate.getDate() - 1);
         const startDate = new Date();
         startDate.setDate(startDate.getDate() - 6);
-        // const response = await fetch(`https://www.duolingo.com/2017-06-30/users/${member.id}/xp_summaries?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`);
-        const response = await fetch(`https://duostar-worker.tdtgit.workers.dev/${member.id}/points`);
+        const response = await fetch(`${BACKEND_URL}/${member.id}/points`);
         const data = await response.json();
         return data;
     }
