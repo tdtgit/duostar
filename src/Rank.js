@@ -58,13 +58,13 @@ function Rank() {
     const [loading, setLoading] = useState(true);
 
     const fetchUserInfo = async (member) => {
-        const response = await fetch(`${BACKEND_URL}/${member}`);
+        const response = await fetch(`${BACKEND_URL}/${member}?t=${Date.now()}`);
         const data = await response.json();
         return data;
     }
 
     const fetchUserPoints = async (member) => {
-        const response = await fetch(`${BACKEND_URL}/${member.id}/points`);
+        const response = await fetch(`${BACKEND_URL}/${member.id}/points?t=${Date.now()}`);
         const data = await response.json();
         return data;
     }
