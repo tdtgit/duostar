@@ -26,9 +26,9 @@ export default function Member({ member }) {
     ]
 
     let FirstAvatar = member.avatar.replace("xlarge", "xxlarge");
-    let FirstComment = `${member.name} is the current leader with ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
-    let SecondaryComment = `${member.name} is the current second place with ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
-    let ThirdComment = `${member.name} is the current third place with ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let FirstComment = `${member.name} is the current leader with ${member.streak} streak and ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let SecondaryComment = `${member.name} is the current second place with ${member.streak} streak, ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let ThirdComment = `${member.name} is the current third place with ${member.streak} streak, ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
 
     let memberContent;
     if (member.rank === 1) {
@@ -61,7 +61,7 @@ export default function Member({ member }) {
                     style="dark"
                     placement="bottom"
                 >
-                    <Animated animationIn="fadeInUp" animationInDuration="1000" isVisible={true}>
+                    <Animated animationIn="fadeInUp" animationInDuration="1000" animationInDelay="200" isVisible={true}>
                         <div class="relative mb-8">
                             <div class="w-10/12 h-auto rounded-full mx-auto" style={styleAvatar(member.avatar)}>
                                 <img  alt={member.name} class="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={member.avatar} />
