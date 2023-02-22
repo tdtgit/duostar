@@ -28,7 +28,7 @@ export default function ({ member }) {
     }
 
     memberContent = (
-        <a href="" class="contents text-center">{memberContent}</a>
+        <a href={`https://www.duolingo.com/profile/${member.username}`} class="contents text-center">{memberContent}</a>
     );
 
     return (memberContent);
