@@ -26,9 +26,9 @@ export default function Member({ member }) {
     ]
 
     let FirstAvatar = member.avatar.replace("xlarge", "xxlarge");
-    let FirstComment = `${member.name} is the current leader with ${member.streak} streak and ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
-    let SecondaryComment = `${member.name} is the current second place with ${member.streak} streak, ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
-    let ThirdComment = `${member.name} is the current third place with ${member.streak} streak, ${member.totalXPPoints} points. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let FirstComment = `${member.name} is the current leader with ${member.streak} streak and ${member.totalXPPoints} Duo points, total points: ${member.totalPoints}. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let SecondaryComment = `${member.name} is the current second place with ${member.streak} streak, ${member.totalXPPoints} Duo points , total points: ${member.totalPoints}. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
+    let ThirdComment = `${member.name} is the current third place with ${member.streak} streak, ${member.totalXPPoints} Duo points, total points: ${member.totalPoints}. ${Cheeries[Math.floor(Math.random() * Cheeries.length)]}`;
 
     let memberContent;
     if (member.rank === 1) {

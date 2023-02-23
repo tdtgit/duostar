@@ -1,3 +1,5 @@
+import { Tooltip } from "flowbite-react";
+
 export default function ({ member }) {
     return (
         <article className="lg:p-4 py-2 items-start flex justify-start">
@@ -18,9 +20,14 @@ export default function ({ member }) {
                 <span class="lg:text-xl text-gray-600">{member.streak}</span>
             </div>
             <div class="lg:basis-1/6 basis-1/5 self-center text-center">
-                <span class="lg:text-xl text-gray-600">{member.totalXPPoints}</span>
-                {/* <br />
-                <span class="lg:text-xs lg:font-medium text-gray-600">{member.totalPoints}</span> */}
+                <Tooltip
+                    content={`Duo points: ${member.totalXPPoints}`}
+                    style="dark"
+                    placement="bottom"
+                    className="text-gray-600"
+                >
+                    <span class="lg:text-xl text-gray-600">{member.totalPoints}</span>
+                </Tooltip>
             </div>
             {/* <ul>
                 {member.points.map(point => (
