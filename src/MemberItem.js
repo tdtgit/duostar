@@ -24,7 +24,6 @@ export default function ({ member }) {
                     content={`Duo points: ${member.totalXPPoints}`}
                     style="dark"
                     placement="bottom"
-                    className="text-gray-600"
                 >
                     <span class="lg:text-xl text-gray-600">{member.totalPoints}</span>
                 </Tooltip>
