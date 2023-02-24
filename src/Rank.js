@@ -67,6 +67,8 @@ function Rank() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
+            
             const members = process.env.REACT_APP_MEMBERS.split(',');
             const memberInfo = await Promise.all(members.map(member => fetchUserInfo(member)));
 
@@ -118,14 +120,19 @@ function Rank() {
             setMembers(memberData);
             setLoading(false);
         }
-        fetchData();
+        fetchData(true);
+
+        const interval = setInterval(() => {
+            fetchData();
+        }, 60000);
+        return () => clearInterval(interval);
     }, []);
 
     return (
         loading ? (
             <Loading />
         ) : (
-            <div className="container mx-auto md:p-0 p-4 md:mt-12">
+            <div className="container mx-auto md:p-0 p-4 md:mt-8">
                 <div className="md:w-250 w-auto mx-auto">
                     <TopList>
                         {members && members.slice(0, 3).map(member => (

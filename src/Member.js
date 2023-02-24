@@ -1,17 +1,17 @@
-export default function ({ children }) {
+export default function Member({ children }) {
     let ListHeader;
 
     ListHeader = (
         <article className="lg:p-4 py-2 mt-12 items-start flex justify-start">
-            <div class="basis-1/6 self-center text-center"><span class="font-medium text-gray-600">Rank</span></div>
-            <div class="basis-full grow self-center">
+            <div className="basis-1/6 self-center text-center"><span className="font-medium text-gray-600">Rank</span></div>
+            <div className="basis-full grow self-center">
               
             </div>
-            <div class="lg:basis-1/6 basis-1/5 self-center text-center">
-                <span class="font-medium text-gray-600">Streak</span>
+            <div className="lg:basis-1/6 basis-1/5 self-center text-center">
+                <span className="font-medium text-gray-600">Streak</span>
             </div>
-            <div class="lg:basis-1/6 basis-1/5 self-center text-center">
-                <span class="font-medium text-gray-600">Points</span>
+            <div className="lg:basis-1/6 basis-1/5 self-center text-center">
+                <span className="font-medium text-gray-600">Points</span>
             </div>
         </article>
     )

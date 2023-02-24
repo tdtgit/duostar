@@ -4,7 +4,6 @@ import SilverCup from "./images/silver-cup.png";
 import BronzeCup from "./images/bronze-cup.png";
 import { Animated } from "react-animated-css";
 
-
 export default function Member({ member }) {
     let styleAvatar = (avatar) => {
         return {
@@ -36,19 +35,18 @@ export default function Member({ member }) {
             <div className="basis-1/2">
                 <Tooltip
                     content={FirstComment}
-                    style="dark"
                     placement="bottom"
                 >
-                    <Animated animationIn="fadeInUp" animationInDuration="1500" animationInDelay="1000" isVisible={true}>
-                        <div class="relative mb-8">
-                            <div class="w-10/12 h-auto rounded-full mx-auto" style={styleAvatar(FirstAvatar)}>
-                                <img alt={member.name} class="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={FirstAvatar} />
+                    <Animated animationIn="fadeInUp" animationInDuration={1500} animationInDelay={1000} isVisible={true}>
+                        <div className="relative mb-8">
+                            <div className="w-10/12 h-auto rounded-full mx-auto" style={styleAvatar(FirstAvatar)}>
+                                <img alt={member.name} className="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={FirstAvatar} />
                             </div>
-                            <div class="absolute bottom-0 w-full">
-                                <img  alt={member.name} src={GoldCup} class="md:w-20 w-16 mx-auto" style={{ marginBottom: "-20px" }} />
+                            <div className="absolute bottom-0 w-full">
+                                <img  alt={member.name} src={GoldCup} className="md:w-20 w-16 mx-auto" style={{ marginBottom: "-20px" }} />
                             </div>
                         </div>
-                        <h2 class="lg:text-2xl text-xl text-emerald-600 font-medium">{member.name}</h2>
+                        <h2 className="lg:text-2xl text-xl text-emerald-600 font-medium">{member.name}</h2>
                     </Animated>
                 </Tooltip>
             </div>
@@ -58,23 +56,22 @@ export default function Member({ member }) {
             <div className={member.rank === 2 ? "basis-1/4 self-end order-first" : "basis-1/4 self-end"}>
                 <Tooltip
                     content={member.rank === 2 ? SecondaryComment : ThirdComment}
-                    style="dark"
                     placement="bottom"
                 >
-                    <Animated animationIn="fadeInUp" animationInDuration="1000" animationInDelay="200" isVisible={true}>
-                        <div class="relative mb-8">
-                            <div class="w-10/12 h-auto rounded-full mx-auto" style={styleAvatar(member.avatar)}>
-                                <img  alt={member.name} class="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={member.avatar} />
+                    <Animated animationIn="fadeInUp" animationInDuration={1000} animationInDelay={200} isVisible={true}>
+                        <div className="relative mb-8">
+                            <div className="w-10/12 h-auto rounded-full mx-auto" style={styleAvatar(member.avatar)}>
+                                <img  alt={member.name} className="rounded-full mx-auto mb-3  border-8 border-emerald-500 p-1 z-10 invisible" src={member.avatar} />
                             </div>
-                            <div class="absolute bottom-0 w-full">
+                            <div className="absolute bottom-0 w-full">
                                 {member.rank === 2 ? (
-                                    <img alt="Silver cup"  src={SilverCup} class="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
+                                    <img alt="Silver cup"  src={SilverCup} className="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
                                 ) : (
-                                    <img alt="Bronze cup"  src={BronzeCup} class="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
+                                    <img alt="Bronze cup"  src={BronzeCup} className="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
                                 )}
                             </div>
                         </div>
-                        <h2 class="md:text-xl text-emerald-600 font-medium whitespace-nowrap">{member.name}</h2>
+                        <h2 className="md:text-xl text-emerald-600 font-medium whitespace-nowrap">{member.name}</h2>
                     </Animated>
                 </Tooltip>
             </div>
@@ -82,7 +79,7 @@ export default function Member({ member }) {
     }
 
     memberContent = (
-        <a href={`https://www.duolingo.com/profile/${member.username}`} class="contents text-center" target="_blank" rel="noreferrer">{memberContent}</a>
+        <a href={`https://www.duolingo.com/profile/${member.username}`} className="contents text-center" target="_blank" rel="noreferrer">{memberContent}</a>
     );
 
     return (memberContent);
