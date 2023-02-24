@@ -1,11 +1,12 @@
 export default function Note() {
     const isWeekend = () => {
-        const today = new Date(
+        const now = new Date(
             new Date().toLocaleString('en-US', { timeZone: "Asia/Ho_Chi_Minh" })
         );
-        const day = today.getDay();
-        const hour = today.getHours();
-        return (day === 0 && hour >= 21) || (day === 1 && hour < 10);
+        const dayOfWeek = now.getDay();
+        const hour = now.getHours();
+
+        return (dayOfWeek >= 6 && hour >= 9 || dayOfWeek == 1 && hour < 10);
     };
 
     return (
@@ -19,7 +20,7 @@ export default function Note() {
                             <h3 className="text-lg font-medium">Freeze time!</h3>
                         </div>
                         <div className="mt-2 mb-2 text-sm">
-                            From 9pm Sunday to 10am Monday, the leaderboard will be frozen. This is to make the progress is a little more enjoyable and push you to keep learning.
+                            From 9am Saturday to 10am Monday, the leaderboard will be frozen. This is to make the progress is a little more enjoyable and competitive, push you to keep learning.
                         </div>
                     </div>
                 </div>
