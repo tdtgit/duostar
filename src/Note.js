@@ -19,7 +19,7 @@ export default function Note() {
                             <h3 className="text-lg font-medium">Freeze time!</h3>
                         </div>
                         <div className="mt-2 mb-2 text-sm">
-                            From 10pm Sunday to 10am Monday, the leaderboard will be frozen. This is to make the progress is a little more enjoyable and push you to keep learning.
+                            From 9pm Sunday to 10am Monday, the leaderboard will be frozen. This is to make the progress is a little more enjoyable and push you to keep learning.
                         </div>
                     </div>
                 </div>
