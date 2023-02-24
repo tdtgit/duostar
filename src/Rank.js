@@ -52,7 +52,6 @@ function calculateStreak(points) {
 function Rank() {
     const [members, setMembers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isFirstTime, setIsFirstTime] = useState(true);
 
     const fetchUserInfo = async (member) => {
         const response = await fetch(`${BACKEND_URL}/${member}?t=${Date.now()}`);
@@ -67,7 +66,7 @@ function Rank() {
     }
 
     useEffect(() => {
-        const fetchData = async (isFirstTime) => {            
+        const fetchData = async () => {
             const members = process.env.REACT_APP_MEMBERS.split(',');
             const memberInfo = await Promise.all(members.map(member => fetchUserInfo(member)));
 
@@ -119,12 +118,7 @@ function Rank() {
             setMembers(memberData);
             setLoading(false);
         }
-        fetchData(true);
-
-        const interval = setInterval(() => {
-            fetchData();
-        }, 60000);
-        return () => clearInterval(interval);
+        fetchData();
     }, []);
 
     return (
@@ -135,7 +129,7 @@ function Rank() {
                 <div className="md:w-250 w-auto mx-auto">
                     <TopList>
                         {members && members.slice(0, 3).map(member => (
-                            <TopListItem key={member.id} member={member} isFirstTime={isFirstTime} />
+                            <TopListItem key={member.id} member={member} />
                         ))}
                     </TopList>
 

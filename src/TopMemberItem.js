@@ -4,7 +4,7 @@ import SilverCup from "./images/silver-cup.png";
 import BronzeCup from "./images/bronze-cup.png";
 import { Animated } from "react-animated-css";
 
-export default function Member({ member, isFirstTime }) {
+export default function Member({ member }) {
     let styleAvatar = (avatar) => {
         return {
             background: `linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%), url(${avatar})`,
