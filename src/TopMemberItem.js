@@ -76,7 +76,7 @@ export default function Member({ member, isFirstTime }) {
                                 </div>
                                 <div className="absolute bottom-0 w-full">
                                     {member.rank === 2 ? (
-                                        <img alt="Silver cup" src={SilverCup} className="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
+                                        <img alt="Silver cup" src={SilverCup} className="md:w-14 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
                                     ) : (
                                         <img alt="Bronze cup" src={BronzeCup} className="md:w-12 w-10 mx-auto" style={{ marginBottom: "-20px" }} />
                                     )}
