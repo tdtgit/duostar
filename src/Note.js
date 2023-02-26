@@ -2,7 +2,7 @@ export default function Note() {
     const now = new Date(Date().toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }));
     const dayOfWeek = now.getDay();
     const hour = now.getHours();
-    const isFreezeTime = dayOfWeek >= 6;
+    const isFreezeTime = dayOfWeek >= 6 || dayOfWeek === 0;
     const isReportingTime = dayOfWeek === 1 && hour >= 0 && hour < 10;
 
     const headerMessageProps = isFreezeTime
