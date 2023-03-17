@@ -40,7 +40,7 @@ export default function Member({ member }) {
     let memberContent;
     if (member.rank === 1) {
         memberContent = (
-            <div className="basis-1/2">
+            <div className="basis-1/2 mb-4">
                 <Tooltip
                     content={FirstComment}
                     placement="bottom"
@@ -58,6 +58,7 @@ export default function Member({ member }) {
                         )
                     }
                     <h2 className="lg:text-2xl text-xl text-emerald-600 font-medium">{member.name}</h2>
+                    <h6 className="text-gray-400 text-sm">⭐️ {member.totalPoints}</h6>
                 </Tooltip>
             </div>
         );
@@ -85,7 +86,7 @@ export default function Member({ member }) {
                         )
                     }
                     <h2 className="md:text-xl text-emerald-600 font-medium whitespace-nowrap">{member.name}</h2>
-
+                    <h6 className="text-gray-400 text-sm">⭐️ {member.totalPoints}</h6>
                 </Tooltip>
             </div>
         );
